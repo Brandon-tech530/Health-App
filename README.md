@@ -112,3 +112,77 @@ The architecture separates presentation, components, and state for increased mai
 
 ## 📁 Project Structure
 
+lib/
+├── Components/ # Shared UI widgets
+├── Database/ # Provider-backed data store
+├── Screens/ # App modules
+└── main.dart # Entry point + Provider wiring
+
+assets/
+└── images/ # Static images
+
+🔄 Key Workflows
+Navigating the App
+
+The app boots to Home and exposes five navigation tabs.
+
+State is preserved per tab.
+
+Working with Location Services
+
+Map requests permissions
+
+Centers map on retrieved location
+
+Handles error cases when location is disabled
+
+Triggering Emergency Workflows
+
+Tap glowing Emergency Alert
+
+Actions:
+
+Open dialog
+
+Make emergency call
+
+Update placeholder phone numbers before production.
+
+Managing Bookings
+
+Appointment list managed via Provider
+
+UI updates automatically via notifyListeners()
+
+⚙️ Configuration Notes
+
+Place new images under assets/images/ and declare in pubspec.yaml
+
+Permissions required:
+
+Location
+
+Telephony
+
+Configure platform files:
+
+Android → AndroidManifest.xml
+
+iOS → Info.plist
+
+Update branding strings across:
+
+home2.dart
+
+userProfile.dart
+
+emergency.dart
+
+| Issue                     | Fix                                 |
+| ------------------------- | ----------------------------------- |
+| Location disabled         | Enable GPS                          |
+| Permission denied forever | Re-enable via device settings       |
+| `url_launcher` fails      | Check device telephony + URL format |
+| Empty bookings list       | Add to Provider + notifyListeners   |
+
+
